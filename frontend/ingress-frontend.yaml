@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: frontend-ingress
+  namespace: tcf-shared-services
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/security-groups: sg-0450bc330707c0986
+    alb.ingress.kubernetes.io/subnets: subnet-071c3a459da447544,subnet-06a55d2e67efaa10e,subnet-0728ed2d40be74f2e
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 8080}]'
+spec:
+  rules:
+  - host:
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: frontend
+            port:
+              number: 8080
+
+      

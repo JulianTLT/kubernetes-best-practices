@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: frontend
+  name: frontend
+  namespace: tcf-shared-services
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      nodeSelector: 
+        twilio.com/role: tcf-shared-services
+      containers:
+      - image: brendanburns/journal-server:latest
+        imagePullPolicy: IfNotPresent
+        name: frontend
+        env:
+        resources:
+          requests:
+            cpu: "1.0"
+            memory: "1G"
+          limits:
+            cpu: "1.0"
+            memory: "1G"
