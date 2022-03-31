@@ -4,7 +4,7 @@ metadata:
   labels:
     app: frontend
   name: frontend
-  namespace: tcf-shared-services
+  #namespace: tcf-shared-services
 spec:
   ports:
   - port: 8080

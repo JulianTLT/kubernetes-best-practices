@@ -4,7 +4,7 @@ metadata:
   labels:
     app: frontend
   name: frontend
-  namespace: tcf-shared-services
+  #namespace: tcf-shared-services
 spec:
   replicas: 1
   selector:
@@ -16,7 +16,7 @@ spec:
         app: frontend
     spec:
       nodeSelector: 
-        twilio.com/role: tcf-shared-services
+        #twilio.com/role: tcf-shared-services
       containers:
       - image: brendanburns/journal-server:latest
         imagePullPolicy: IfNotPresent
